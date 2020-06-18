@@ -34,20 +34,11 @@ class Menu:
                     handle=False
                     return 0
                 if event.type == pygame.MOUSEBUTTONDOWN:
-                    if 300 <= mouse_pos[0] <= 500:
-                        if 300 <= mouse_pos[1] <= 350:
-                            self.next_s = 1
-                        if 400 <= mouse_pos[1] <= 450:
-                            self.next_s = 0
-                if 300 <= mouse_pos[0] <= 500:
-                    if 300 <= mouse_pos[1] <= 350:
-                        game_button[1] = (255, 0, 0)
-                    else:
-                        game_button[1] = (0, 0, 0)
-                    if 400 <= mouse_pos[1] <= 450:
-                        quit_button[1] = (255, 0, 0)
-                    else:
-                        quit_button[1] = (0, 0, 0)
+                    if event.button==1: #Check if it's the LMB
+                        if game_button.get_rect().collidepoint(event.pos):
+                            #Game button is pressed
+                        if quit_button.get_rect().collidepoint(event.pos):
+                            #Quit button is pressed
             game_button[2] = self.text_sufrace("Start game", buttonText, game_button[1])
             quit_button[2] = self.text_sufrace("Quit game", buttonText, quit_button[1])
             pygame.draw.rect(self.surface, game_button[1], game_button[0], 5)
